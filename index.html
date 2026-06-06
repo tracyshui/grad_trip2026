@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>台灣畢業旅行 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --cream: #fdf6ec;
+    --warm: #f5ead6;
+    --gold: #c8922a;
+    --gold-light: #e8b84b;
+    --rust: #c45c2a;
+    --jade: #2a7a5c;
+    --jade-light: #3a9a72;
+    --sky: #3a6a9a;
+    --red: #c42a2a;
+    --muted: #8a7a6a;
+    --border: #e0d0b8;
+    --card: #fffdf8;
+    --shadow: rgba(26,18,8,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    padding-bottom: 80px;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(160deg, #1a3a2a 0%, #2a5a3c 40%, #1a4a6a 100%);
+    padding: 32px 20px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 500;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', 'Noto Serif TC', serif;
+    font-size: 28px;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .hero-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  .hero-pills {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    backdrop-filter: blur(4px);
+  }
+
+  /* BOTTOM NAV */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    display: flex;
+    box-shadow: 0 -4px 20px var(--shadow);
+  }
+  .nav-btn {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 10px 4px 8px;
+    background: none; border: none; cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 10px; color: var(--muted);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-btn.active { color: var(--jade); }
+  .nav-btn .icon { font-size: 20px; margin-bottom: 2px; display: block; }
+  .nav-btn::after {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 0; height: 2px; background: var(--jade);
+    transition: width 0.3s cubic-bezier(.4,0,.2,1);
+    border-radius: 0 0 2px 2px;
+  }
+  .nav-btn.active::after { width: 36px; }
+
+  /* SECTIONS */
+  .section { display: none; padding: 0 0 20px; }
+  .section.active { display: block; }
+
+  /* SECTION HEADER */
+  .section-header {
+    padding: 20px 20px 0;
+    margin-bottom: 16px;
+  }
+  .section-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px; font-weight: 700; color: var(--ink);
+  }
+
+  /* DAY CARDS */
+  .day-card {
+    margin: 0 16px 16px;
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .day-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+    background: var(--card);
+    transition: background 0.2s;
+  }
+  .day-header:active { background: var(--warm); }
+  .day-num {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    flex-shrink: 0;
+  }
+  .day-num .d { font-size: 18px; line-height: 1; font-weight: 700; color: #fff; }
+  .day-num .lbl { font-size: 9px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+  .day-info { flex: 1; min-width: 0; }
+  .day-date { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+  .day-title { font-size: 15px; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .day-chevron { font-size: 14px; color: var(--muted); transition: transform 0.3s; }
+  .day-card.open .day-chevron { transform: rotate(180deg); }
+
+  .day-body { display: none; border-top: 1px solid var(--border); }
+  .day-card.open .day-body { display: block; }
+
+  /* TIMELINE */
+  .timeline { padding: 16px; }
+  .tl-item { display: flex; gap: 12px; margin-bottom: 16px; position: relative; }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-left { display: flex; flex-direction: column; align-items: center; width: 52px; flex-shrink: 0; }
+  .tl-time { font-size: 11px; font-weight: 600; color: var(--gold); text-align: center; line-height: 1.2; white-space: nowrap; }
+  .tl-line { width: 1px; flex: 1; background: var(--border); margin-top: 4px; min-height: 20px; }
+  .tl-item:last-child .tl-line { display: none; }
+  .tl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--jade); flex-shrink: 0; margin-top: 3px; }
+  .tl-content { flex: 1; padding-top: 0; }
+  .tl-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .tl-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 6px; }
+  .tl-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 20px; margin-right: 4px; margin-bottom: 4px; font-weight: 500; }
+  .tag-confirmed { background: #e8f5ee; color: var(--jade); }
+  .tag-elder { background: #fff3e0; color: #d4691e; }
+  .tag-food { background: #fdecea; color: var(--rust); }
+  .tag-transport { background: #e8eef5; color: var(--sky); }
+
+  /* MAP BTN */
+  .map-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--jade); color: #fff;
+    border: none; border-radius: 8px;
+    padding: 7px 12px; font-size: 12px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 4px;
+  }
+  .map-btn:active { background: var(--jade-light); transform: scale(0.97); }
+  .map-btn-outline {
+    background: transparent; color: var(--jade);
+    border: 1.5px solid var(--jade);
+  }
+  .map-btn-outline:active { background: #e8f5ee; }
+
+  /* TRANSPORT SECTION */
+  .transport-card {
+    margin: 0 16px 12px;
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .transport-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .transport-icon { font-size: 24px; }
+  .transport-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .transport-date { font-size: 11px; color: var(--muted); }
+  .transport-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .transport-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .transport-label { font-size: 12px; color: var(--muted); }
+  .transport-value { font-size: 13px; font-weight: 500; color: var(--ink); text-align: right; }
+  .transport-route { display: flex; align-items: center; gap: 8px; margin: 10px 0; }
+  .route-point { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .route-arrow { font-size: 16px; color: var(--gold); flex: 1; text-align: center; }
+
+  /* HOTEL SECTION */
+  .hotel-card {
+    margin: 0 16px 12px;
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .hotel-stripe {
+    height: 6px;
+  }
+  .hotel-body { padding: 14px 16px; }
+  .hotel-nights { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .hotel-name { font-family: 'Noto Serif TC', serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .hotel-addr { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+  .hotel-features { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .feature-tag { font-size: 11px; padding: 3px 9px; background: var(--warm); border-radius: 20px; color: var(--ink); }
+
+  /* LUGGAGE */
+  .luggage-section { margin: 0 16px 16px; }
+  .luggage-group { margin-bottom: 16px; }
+  .luggage-group-title {
+    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 0; border-bottom: 1px solid rgba(224,208,184,0.4);
+    cursor: pointer;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--border);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; background: #fff;
+  }
+  .checklist-item.checked .check-box { background: var(--jade); border-color: var(--jade); }
+  .checklist-item.checked .check-box::after { content: '✓'; font-size: 12px; color: #fff; font-weight: 700; }
+  .checklist-item.checked .check-label { text-decoration: line-through; color: var(--muted); }
+  .check-label { font-size: 14px; color: var(--ink); }
+
+  /* BUDGET */
+  .budget-summary {
+    margin: 0 16px 16px;
+    background: linear-gradient(135deg, #1a3a2a, #1a4a6a);
+    border-radius: 16px; padding: 20px;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(26,58,42,0.3);
+  }
+  .budget-total-label { font-size: 11px; opacity: 0.7; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .budget-total { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--gold-light); margin-bottom: 4px; }
+  .budget-sub { font-size: 12px; opacity: 0.65; }
+  .budget-bar-wrap { margin-top: 16px; }
+  .budget-bar-label { display: flex; justify-content: space-between; font-size: 11px; opacity: 0.7; margin-bottom: 4px; }
+  .budget-bar { height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+  .budget-bar-fill { height: 100%; background: var(--gold-light); border-radius: 3px; transition: width 1s cubic-bezier(.4,0,.2,1); }
+
+  .budget-row-card {
+    margin: 0 16px 10px;
+    background: var(--card);
+    border-radius: 12px; border: 1px solid var(--border);
+    padding: 12px 16px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 1px 6px var(--shadow);
+  }
+  .budget-row-left { display: flex; align-items: center; gap: 10px; }
+  .budget-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .budget-day-label { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .budget-day-sub { font-size: 11px; color: var(--muted); }
+  .budget-amount { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); }
+
+  /* INFO BOX */
+  .info-box {
+    margin: 0 16px 12px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 14px 16px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .info-box-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .info-row { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(224,208,184,0.4); font-size: 12px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { color: var(--muted); width: 80px; flex-shrink: 0; }
+  .info-val { color: var(--ink); flex: 1; line-height: 1.5; }
+
+  /* COLORS for day numbers */
+  .dc-1 { background: linear-gradient(135deg, #2a5a3c, #3a7a52); }
+  .dc-2 { background: linear-gradient(135deg, #5a3a1a, #8a5a2a); }
+  .dc-3 { background: linear-gradient(135deg, #2a3a6a, #3a5a8a); }
+  .dc-4 { background: linear-gradient(135deg, #6a2a2a, #9a4a2a); }
+  .dc-5 { background: linear-gradient(135deg, #2a5a5a, #3a7a7a); }
+  .dc-6 { background: linear-gradient(135deg, #4a2a6a, #6a4a8a); }
+  .dc-7 { background: linear-gradient(135deg, #1a4a2a, #c8922a); }
+
+  .hs-1 { background: linear-gradient(90deg, #2a5a3c, #3a7a52); }
+  .hs-2 { background: linear-gradient(90deg, #c8922a, #e8b84b); }
+  .hs-3 { background: linear-gradient(90deg, #2a3a6a, #3a5a8a); }
+
+  /* ANIMATE */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .day-card { animation: fadeUp 0.4s ease both; }
+  .day-card:nth-child(1) { animation-delay: 0.05s; }
+  .day-card:nth-child(2) { animation-delay: 0.1s; }
+  .day-card:nth-child(3) { animation-delay: 0.15s; }
+  .day-card:nth-child(4) { animation-delay: 0.2s; }
+  .day-card:nth-child(5) { animation-delay: 0.25s; }
+  .day-card:nth-child(6) { animation-delay: 0.3s; }
+  .day-card:nth-child(7) { animation-delay: 0.35s; }
+
+  .notice {
+    margin: 0 16px 12px;
+    background: #fff8e8; border: 1px solid #e8c86a; border-radius: 10px;
+    padding: 10px 14px; font-size: 12px; color: #7a5a10; line-height: 1.6;
+  }
+  .notice b { color: #5a4000; }
+
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 8px 16px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">✈ June 2026 · Taiwan</div>
+  <div class="hero-title">台灣畢業<br>家庭旅行</div>
+  <div class="hero-subtitle">6月6日 — 12日 ｜ 6天5夜</div>
+  <div class="hero-pills">
+    <span class="pill">🏫 台北</span>
+    <span class="pill">🌆 台中</span>
+    <span class="pill">🏕️ 苗栗</span>
+    <span class="pill">👨‍👩‍👧‍👦 4人</span>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-tab="itinerary" onclick="switchTab('itinerary',this)">
+    <span class="icon">🗓️</span>每日行程
+  </button>
+  <button class="nav-btn" data-tab="transport" onclick="switchTab('transport',this)">
+    <span class="icon">🚐</span>交通
+  </button>
+  <button class="nav-btn" data-tab="hotel" onclick="switchTab('hotel',this)">
+    <span class="icon">🏨</span>住宿
+  </button>
+  <button class="nav-btn" data-tab="luggage" onclick="switchTab('luggage',this)">
+    <span class="icon">🎒</span>行李
+  </button>
+  <button class="nav-btn" data-tab="budget" onclick="switchTab('budget',this)">
+    <span class="icon">💰</span>預算
+  </button>
+</nav>
+
+<!-- ===== ITINERARY ===== -->
+<section id="tab-itinerary" class="section active">
+  <div class="section-header">
+    <div class="section-label">DAILY SCHEDULE</div>
+    <div class="section-title">每日行程</div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card" id="day1">
+    <div class="day-header" onclick="toggleDay('day1')">
+      <div class="day-num dc-1"><span class="d">1</span><span class="lbl">DAY</span></div>
+      <div class="day-info">
+        <div class="day-date">6月6日（六）</div>
+        <div class="day-title">✈️ 抵達台北</div>
+      </div>
+      <span class="day-chevron">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">抵台</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">✈️ UO110 桃園機場落地</div>
+            <div class="tl-desc">辦理入境、取行李</div>
+            <span class="tl-tag tag-confirmed">已確認</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">機場<br>出發</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚗 包車前往洛碁大飯店</div>
+            <div class="tl-desc">車程約40–50分鐘 ｜ 費用約NT$1,200–1,500</div>
+            <span class="tl-tag tag-elder">長輩友善 ✅</span>
+            <span class="tl-tag tag-transport">包車</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">15:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">☕ 南美咖啡下午茶</div>
+            <div class="tl-desc">西門町50年老字號｜炭燒咖啡 + 三明治｜電話 02-2371-0150</div>
+            <span class="tl-tag tag-food">下午茶</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=台北市萬華區成都路44號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">傍晚</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚶 西門町散步</div>
+            <div class="tl-desc">路面平坦，電梯多，長輩友善</div>
+            <span class="tl-tag tag-elder">長輩友善 ✅</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card" id="day2">
+    <div class="day-header" onclick="toggleDay('day2')">
+      <div class="day-num dc-2"><span class="d">2</span><span class="lbl">DAY</span></div>
+      <div class="day-info">
+        <div class="day-date">6月7日（日）</div>
+        <div class="day-title">🎓 畢業典禮日</div>
+      </div>
+      <span class="day-chevron">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">早上</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍳 飯店早餐</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚕 計程車前往銘傳大學</div>
+            <div class="tl-desc">車程約20分鐘 ｜ 費用約NT$250–300</div>
+            <span class="tl-tag tag-transport">計程車</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">12:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🎓 小畢業典禮</div>
+            <div class="tl-desc">銘傳大學台北校區 ｜ 台北市士林區中山北路5段250號</div>
+            <span class="tl-tag tag-confirmed">已確認</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=台北市士林區中山北路5段250號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">14:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍜 士林站附近午餐</div>
+            <div class="tl-desc">叫 Uber 前往士林站周邊覓食</div>
+            <span class="tl-tag tag-transport">Uber</span>
+            <span class="tl-tag tag-food">午餐</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">17:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🎓 正式畢業典禮</div>
+            <div class="tl-desc">銘傳大學台北校區（逸仙堂）｜ 17:00–18:15</div>
+            <span class="tl-tag tag-confirmed">已確認</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">~19:00</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍢 晚餐｜買串燒烤</div>
+            <div class="tl-desc">台北市士林區基河路151號旁 ｜ 17:00–00:00 ｜ 電話 02-2883-8988｜串燒25元起 🍺</div>
+            <span class="tl-tag tag-food">晚餐</span>
+            <span class="tl-tag tag-elder">室內冷氣 ✅</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=台北市士林區基河路151號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card" id="day3">
+    <div class="day-header" onclick="toggleDay('day3')">
+      <div class="day-num dc-3"><span class="d">3</span><span class="lbl">DAY</span></div>
+      <div class="day-info">
+        <div class="day-date">6月8日（一）</div>
+        <div class="day-title">📸 家庭寫真 → 台中</div>
+      </div>
+      <span class="day-chevron">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">早上</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍳 飯店早餐 + 整理行李</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚕 前往春山相館</div>
+            <div class="tl-desc">計程車約15分鐘 ｜ 費用約NT$200</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">12:00<br>–13:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🎞️ 春山相館 畢業家庭照</div>
+            <div class="tl-desc">台北市中山區中山北路二段45巷7號1樓（晶華酒店旁）｜電話 02-2523-7333</div>
+            <span class="tl-tag tag-confirmed">已預訂 ✅</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=台北市中山區中山北路二段45巷7號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">13:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍱 中山商圈午餐</div>
+            <div class="tl-desc">赤峰街 / 中山站一帶 ｜ 預估NT$250–400／人</div>
+            <span class="tl-tag tag-food">午餐</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">16:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚐 Tripool包車出發</div>
+            <div class="tl-desc">洛碁大飯店 → 台中東旅 ｜ 車程約2–2.5小時</div>
+            <span class="tl-tag tag-confirmed">已預訂 ✅</span>
+            <span class="tl-tag tag-transport">包車</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">18:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🏨 台中東旅 Check-in</div>
+            <div class="tl-desc">台中市西區英才路601號</div>
+            <a class="map-btn map-btn-outline" href="https://maps.google.com/?q=台中市西區英才路601號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">晚上</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍬 宮原眼科</div>
+            <div class="tl-desc">台中市中區中山路20號 ｜ 電話 04-2227-1927 ｜ 11:00–22:00｜冰淇淋 + 伴手禮 必打卡！</div>
+            <span class="tl-tag tag-elder">室內冷氣 ✅</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=台中市中區中山路20號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card" id="day4">
+    <div class="day-header" onclick="toggleDay('day4')">
+      <div class="day-num dc-4"><span class="d">4</span><span class="lbl">DAY</span></div>
+      <div class="day-info">
+        <div class="day-date">6月9日（二）</div>
+        <div class="day-title">🎡 九族文化村</div>
+      </div>
+      <span class="day-chevron">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">早上</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content"><div class="tl-name">🍳 飯店早餐</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">09:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚗 旅步租車出發（單程包車）</div>
+            <div class="tl-desc">台中東旅 → 九族文化村 ｜ 車程約1小時15分</div>
+            <span class="tl-tag tag-transport">旅步包車</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">10:30<br>–14:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🎡 九族文化村遊玩（半天）</div>
+            <div class="tl-desc">南投縣魚池鄉大林村心夢谷1號｜門票約NT$790／人（建議事先購買）</div>
+            <span class="tl-tag tag-elder">接駁車可用 ⚠️</span>
+            <div class="tl-desc" style="margin-top:6px;">💡 長輩路線：纜車賞日月潭景 → 原住民文化展示館（室內）→ 接駁車代步</div>
+            <a class="map-btn" href="https://maps.google.com/?q=九族文化村+南投縣魚池鄉" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">午餐</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍱 園區內餐廳</div>
+            <div class="tl-desc">預估 NT$300–500／人</div>
+            <span class="tl-tag tag-food">午餐</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">15:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚕 返回台中</div>
+            <div class="tl-desc">計程車或排班車 ｜ 車程約1.5小時</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">晚上</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🌙 逢甲夜市自由覓食</div>
+            <div class="tl-desc">計程車前往，預估NT$300–500／人</div>
+            <span class="tl-tag tag-food">晚餐</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card" id="day5">
+    <div class="day-header" onclick="toggleDay('day5')">
+      <div class="day-num dc-5"><span class="d">5</span><span class="lbl">DAY</span></div>
+      <div class="day-info">
+        <div class="day-date">6月10日（三）</div>
+        <div class="day-title">🏙️ 文青日 + 海鮮晚宴</div>
+      </div>
+      <span class="day-chevron">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">早上</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content"><div class="tl-name">🍳 飯店早餐</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">10:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🏘️ 審計新村（審計368新創聚落）</div>
+            <div class="tl-desc">台中市西區民生路368巷 ｜ 10:00–20:00 ｜ 飯店步行約10分鐘</div>
+            <div class="tl-desc" style="margin-top:4px;">推薦：旅禾泡芙、魚刺人雞蛋糕、成真咖啡</div>
+            <span class="tl-tag tag-elder">路面平坦 ✅</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=台中市西區民生路368巷" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">13:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🧈 奶油飯店 BUTTER HOTEL</div>
+            <div class="tl-desc">台中市西區民權路217巷18號 ｜ 電話 04-2301-9007 ｜ 免門票！4層樓奇幻體驗 + 奶油餅乾試吃</div>
+            <div class="tl-desc" style="margin-top:4px;">⏰ 週二–五 13:00–18:30（6/10週三 ✅）｜每人限時40分鐘</div>
+            <a class="map-btn" href="https://maps.google.com/?q=台中市西區民權路217巷18號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">14:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🍜 午餐 + 下午休息</div>
+            <div class="tl-desc">附近餐廳，預估NT$300–400／人 ｜ 下午可回飯店休息</div>
+            <span class="tl-tag tag-food">午餐</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">18:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚕 出發古早味海鮮館</div>
+            <div class="tl-desc">計程車 / Uber約30–40分鐘 ｜ 費用約NT$400–500</div>
+            <span class="tl-tag tag-transport">計程車</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">19:00<br>–21:00</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🦞 古早味海鮮館</div>
+            <div class="tl-desc">台中市梧棲區文化路二段51號（梧棲國小對面）｜電話 04-2658-4232 ｜ 建議事先訂位</div>
+            <div class="tl-desc" style="margin-top:4px;">4人合菜預估 NT$2,500–3,500</div>
+            <span class="tl-tag tag-food">豐盛晚餐</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=台中市梧棲區文化路二段51號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card" id="day6">
+    <div class="day-header" onclick="toggleDay('day6')">
+      <div class="day-num dc-6"><span class="d">6</span><span class="lbl">DAY</span></div>
+      <div class="day-info">
+        <div class="day-date">6月11日（四）</div>
+        <div class="day-title">🏕️ 移師苗栗露營車</div>
+      </div>
+      <span class="day-chevron">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">早上</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content"><div class="tl-name">🍳 飯店早餐 + 整理行李</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">13:45</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚐 Tripool包車出發</div>
+            <div class="tl-desc">台中東旅 → 樹語星宇露營車 ｜ 車程約1小時</div>
+            <span class="tl-tag tag-confirmed">已預訂 ✅</span>
+            <span class="tl-tag tag-transport">包車</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">15:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🏕️ 樹語星宇露營車 Check-in</div>
+            <div class="tl-desc">苗栗縣公館鄉福星村7鄰227之8號 ｜ 電話 0978-317-098</div>
+            <span class="tl-tag tag-elder">冷暖氣 + 獨立衛浴 ✅</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=苗栗縣公館鄉福星村227-8號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">下午</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🌿 環境探索 + 草皮休閒</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">晚上</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🥩 豪華海陸頂級烤肉組（已訂）</div>
+            <div class="tl-desc">澳洛和牛、龍蝦、日本生食貝……盛宴之夜 🎉</div>
+            <span class="tl-tag tag-confirmed">已預訂 ✅</span>
+            <span class="tl-tag tag-food">頂級BBQ</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">夜晚</div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🌟 仰望星空</div>
+            <div class="tl-desc">海拔約300m，空氣清新，苗栗山區夜空 ✨</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-card" id="day7">
+    <div class="day-header" onclick="toggleDay('day7')">
+      <div class="day-num dc-7"><span class="d">7</span><span class="lbl">DAY</span></div>
+      <div class="day-info">
+        <div class="day-date">6月12日（五）</div>
+        <div class="day-title">🛍️ 購物 → 返港</div>
+      </div>
+      <span class="day-chevron">▾</span>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">早上</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">⭐ 露營車早餐（Google五星評價附送）</div>
+            <div class="tl-desc">好評必享的精心早餐 😄</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🧳 整理行李 + 辦理退場</div>
+            <div class="tl-desc">退場時間：中午 12:00</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">11:30</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🚗 旅步租車出發前往桃園</div>
+            <div class="tl-desc">苗栗 → 桃園 ｜ 車程約1小時15分</div>
+            <span class="tl-tag tag-transport">旅步包車</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">13:00<br>–15:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">🛍️ 華泰名品城 GLORIA OUTLETS</div>
+            <div class="tl-desc">桃園市中壢區春德路189號（高鐵桃園站旁）｜3–7折優惠，逾280個品牌</div>
+            <span class="tl-tag tag-elder">輪椅租借 + 無障礙 ✅</span>
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=桃園市中壢區春德路189號" target="_blank">📍 導航前往</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">15:00</div><div class="tl-line"></div></div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-name">✈️ 前往桃園機場</div>
+            <div class="tl-desc">機場捷運 A18站 → 機場約15分鐘 ｜ 或計程車約20分鐘</div>
+            <span class="tl-tag tag-transport">機場捷運</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-time">15:40</div></div>
+          <div class="tl-dot" style="background:var(--rust)"></div>
+          <div class="tl-content">
+            <div class="tl-name" style="color:var(--rust);">⚠️ 最晚出發前往機場！</div>
+            <div class="tl-desc">國際航班建議提前2–3小時辦理出境</div>
+          </div>
+        </div>
+      </div>
+      <div class="notice">
+        <b>UO115 返港提醒</b>：請確認確切起飛時間，若為17:00或之前，請縮短購物時間，以免誤機 ✈️
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRANSPORT ===== -->
+<section id="tab-transport" class="section">
+  <div class="section-header">
+    <div class="section-label">TRANSPORTATION</div>
+    <div class="section-title">交通安排</div>
+  </div>
+
+  <div class="notice">💡 所有包車已考慮長輩使用拐杖，全程盡量減少步行及換乘。</div>
+
+  <div class="transport-card">
+    <div class="transport-header">
+      <div class="transport-icon">✈️</div>
+      <div><div class="transport-title">去程航班</div><div class="transport-date">6月6日（六）</div></div>
+    </div>
+    <div class="transport-route">
+      <div class="route-point">🇭🇰 香港</div>
+      <div class="route-arrow">──✈──▶</div>
+      <div class="route-point">🇹🇼 桃園</div>
+    </div>
+    <div class="transport-row"><div class="transport-label">航班</div><div class="transport-value">UO110（香港快運）</div></div>
+    <div class="transport-row"><div class="transport-label">備註</div><div class="transport-value">請提前2–3小時到機場</div></div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-header">
+      <div class="transport-icon">🚗</div>
+      <div><div class="transport-title">機場包車接送</div><div class="transport-date">6月6日（六）</div></div>
+    </div>
+    <div class="transport-route">
+      <div class="route-point">🛬 桃園機場</div>
+      <div class="route-arrow">──▶</div>
+      <div class="route-point">🏨 洛碁大飯店</div>
+    </div>
+    <div class="transport-row"><div class="transport-label">方式</div><div class="transport-value">包車</div></div>
+    <div class="transport-row"><div class="transport-label">車程</div><div class="transport-value">約40–50分鐘</div></div>
+    <div class="transport-row"><div class="transport-label">費用</div><div class="transport-value">約NT$1,200–1,500</div></div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-header">
+      <div class="transport-icon">🚐</div>
+      <div><div class="transport-title">Tripool包車 #1（已訂）</div><div class="transport-date">6月8日（一）16:00 上車</div></div>
+    </div>
+    <div class="transport-route">
+      <div class="route-point">🏨 洛碁大飯店</div>
+      <div class="route-arrow">──▶</div>
+      <div class="route-point">🏨 台中東旅</div>
+    </div>
+    <div class="transport-row"><div class="transport-label">上車時間</div><div class="transport-value">16:00</div></div>
+    <div class="transport-row"><div class="transport-label">車程</div><div class="transport-value">約2–2.5小時</div></div>
+    <div class="transport-row"><div class="transport-label">預計抵達</div><div class="transport-value">18:30–19:00</div></div>
+    <div class="transport-row"><div class="transport-label">狀態</div><div class="transport-value" style="color:var(--jade);">✅ 已預訂</div></div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-header">
+      <div class="transport-icon">🚗</div>
+      <div><div class="transport-title">旅步租車（包車）</div><div class="transport-date">6月9日（二）</div></div>
+    </div>
+    <div class="transport-route">
+      <div class="route-point">🏨 台中東旅</div>
+      <div class="route-arrow">──▶</div>
+      <div class="route-point">🎡 九族文化村</div>
+    </div>
+    <div class="transport-row"><div class="transport-label">方式</div><div class="transport-value">旅步租車（單程包車）</div></div>
+    <div class="transport-row"><div class="transport-label">出發</div><div class="transport-value">09:00</div></div>
+    <div class="transport-row"><div class="transport-label">車程</div><div class="transport-value">約1小時15分</div></div>
+    <div class="transport-row"><div class="transport-label">回程</div><div class="transport-value">15:00後自行叫計程車</div></div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-header">
+      <div class="transport-icon">🚐</div>
+      <div><div class="transport-title">Tripool包車 #2（已訂）</div><div class="transport-date">6月11日（四）13:45 上車</div></div>
+    </div>
+    <div class="transport-route">
+      <div class="route-point">🏨 台中東旅</div>
+      <div class="route-arrow">──▶</div>
+      <div class="route-point">🏕️ 樹語星宇</div>
+    </div>
+    <div class="transport-row"><div class="transport-label">上車時間</div><div class="transport-value">13:45</div></div>
+    <div class="transport-row"><div class="transport-label">車程</div><div class="transport-value">約1小時</div></div>
+    <div class="transport-row"><div class="transport-label">預計抵達</div><div class="transport-value">15:00前</div></div>
+    <div class="transport-row"><div class="transport-label">狀態</div><div class="transport-value" style="color:var(--jade);">✅ 已預訂</div></div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-header">
+      <div class="transport-icon">🚗</div>
+      <div><div class="transport-title">旅步租車 → 桃園</div><div class="transport-date">6月12日（五）</div></div>
+    </div>
+    <div class="transport-route">
+      <div class="route-point">🏕️ 樹語星宇</div>
+      <div class="route-arrow">──▶</div>
+      <div class="route-point">🛍️ 華泰 / ✈️ 機場</div>
+    </div>
+    <div class="transport-row"><div class="transport-label">出發</div><div class="transport-value">11:30</div></div>
+    <div class="transport-row"><div class="transport-label">車程</div><div class="transport-value">苗栗→桃園 約1小時15分</div></div>
+    <div class="transport-row"><div class="transport-label">機場出發</div><div class="transport-value">⚠️ 最晚 15:40</div></div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-header">
+      <div class="transport-icon">✈️</div>
+      <div><div class="transport-title">回程航班</div><div class="transport-date">6月12日（五）</div></div>
+    </div>
+    <div class="transport-route">
+      <div class="route-point">🇹🇼 桃園</div>
+      <div class="route-arrow">──✈──▶</div>
+      <div class="route-point">🇭🇰 香港</div>
+    </div>
+    <div class="transport-row"><div class="transport-label">航班</div><div class="transport-value">UO115（香港快運）</div></div>
+    <div class="transport-row"><div class="transport-label">提醒</div><div class="transport-value" style="color:var(--rust);">⚠️ 確認確切起飛時間</div></div>
+  </div>
+</section>
+
+<!-- ===== HOTEL ===== -->
+<section id="tab-hotel" class="section">
+  <div class="section-header">
+    <div class="section-label">ACCOMMODATION</div>
+    <div class="section-title">住宿資訊</div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-stripe hs-1"></div>
+    <div class="hotel-body">
+      <div class="hotel-nights">🌙 6月6日 – 8日（2晚）· 台北</div>
+      <div class="hotel-name">洛碁大飯店中華店</div>
+      <div class="hotel-addr">📍 台北市中正區中華路一段41號13樓</div>
+      <div class="hotel-features">
+        <span class="feature-tag">電梯 ✅</span>
+        <span class="feature-tag">西門町步行4分</span>
+        <span class="feature-tag">路面平整</span>
+        <span class="feature-tag">長輩友善</span>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=台北市中正區中華路一段41號" target="_blank">📍 導航前往</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-stripe hs-2"></div>
+    <div class="hotel-body">
+      <div class="hotel-nights">🌙 6月8日 – 11日（3晚）· 台中</div>
+      <div class="hotel-name">台中東旅 The Place Taichung</div>
+      <div class="hotel-addr">📍 台中市西區英才路601號</div>
+      <div class="hotel-features">
+        <span class="feature-tag">電話 (04)2376-6732</span>
+        <span class="feature-tag">無障礙設施</span>
+        <span class="feature-tag">鄰近草悟道</span>
+        <span class="feature-tag">長輩友善 ✅</span>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=台中市西區英才路601號" target="_blank">📍 導航前往</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <div class="hotel-stripe hs-3"></div>
+    <div class="hotel-body">
+      <div class="hotel-nights">🌙 6月11日 – 12日（1晚）· 苗栗</div>
+      <div class="hotel-name">樹語星宇露營車</div>
+      <div class="hotel-addr">📍 苗栗縣公館鄉福星村7鄰227之8號</div>
+      <div class="hotel-features">
+        <span class="feature-tag">電話 0978-317-098</span>
+        <span class="feature-tag">冷暖氣</span>
+        <span class="feature-tag">獨立衛浴</span>
+        <span class="feature-tag">附早餐 ⭐</span>
+        <span class="feature-tag">長輩友善 ✅</span>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=苗栗縣公館鄉福星村227-8號" target="_blank">📍 導航前往</a>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-title">📡 實用資訊</div>
+    <div class="info-row"><div class="info-key">網路</div><div class="info-val">香港機場購台灣SIM卡，5天無限流量約HK$60–80</div></div>
+    <div class="info-row"><div class="info-key">換匯</div><div class="info-val">建議香港先換NT$5,000–8,000現金；台灣ATM可補提</div></div>
+    <div class="info-row"><div class="info-key">天氣</div><div class="info-val">6月梅雨季，28–34°C，多備雨具；苗栗夜間22–24°C</div></div>
+    <div class="info-row"><div class="info-key">緊急電話</div><div class="info-val">警察 110 ｜ 救護車 119</div></div>
+    <div class="info-row"><div class="info-key">插頭</div><div class="info-val">備香港轉台灣插頭轉換器</div></div>
+  </div>
+</section>
+
+<!-- ===== LUGGAGE ===== -->
+<section id="tab-luggage" class="section">
+  <div class="section-header">
+    <div class="section-label">PACKING LIST</div>
+    <div class="section-title">行李清單</div>
+  </div>
+  <div class="luggage-section">
+    <div class="luggage-group">
+      <div class="luggage-group-title">📄 必備文件</div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">護照（確認有效期6個月以上）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">機票確認信（UO110 / UO115）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">飯店訂單截圖（全部3個）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">Tripool包車訂單（×2）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">春山相館預約確認</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">旅遊保險文件</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">九族文化村門票（建議事先購買）</div></div>
+    </div>
+    <div class="luggage-group">
+      <div class="luggage-group-title">👗 衣物</div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">輕薄透氣衣物（6月台灣28–34°C）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">薄外套（室內冷氣強）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">拍照正式服裝（6/7典禮 + 6/8相館）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">舒適好走平底鞋（長輩特別重要）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">拖鞋（露營車入住用）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">薄外套備用（苗栗夜間22–24°C）</div></div>
+    </div>
+    <div class="luggage-group">
+      <div class="luggage-group-title">🦯 長輩專用</div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">拐杖（備用防滑橡膠頭）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">常用藥物（個人備藥）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">小摺疊扇 / 迷你風扇</div></div>
+    </div>
+    <div class="luggage-group">
+      <div class="luggage-group-title">🎒 其他</div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">防曬乳 SPF50+</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">雨傘（6月梅雨季必備）</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">行動電源</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">台灣插頭轉換器</div></div>
+      <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-label">台灣SIM卡（機場購買）</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUDGET ===== -->
+<section id="tab-budget" class="section">
+  <div class="section-header">
+    <div class="section-label">DAILY BUDGET</div>
+    <div class="section-title">每日預算</div>
+  </div>
+
+  <div class="budget-summary">
+    <div class="budget-total-label">餐飲預算總計（每人）</div>
+    <div class="budget-total">NT$5,700</div>
+    <div class="budget-sub">每人餐飲 ｜ 4人共約 NT$22,800</div>
+    <div class="budget-bar-wrap">
+      <div class="budget-bar-label"><span>已用預算比例</span><span>NT$5,000 目標</span></div>
+      <div class="budget-bar"><div class="budget-bar-fill" id="budgetBar" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="budget-row-card">
+    <div class="budget-row-left"><div class="budget-dot" style="background:#2a7a5c"></div><div><div class="budget-day-label">Day 1 · 6/6</div><div class="budget-day-sub">抵台 · 南美咖啡 + 西門晚餐</div></div></div>
+    <div class="budget-amount">~NT$400</div>
+  </div>
+  <div class="budget-row-card">
+    <div class="budget-row-left"><div class="budget-dot" style="background:#c8922a"></div><div><div class="budget-day-label">Day 2 · 6/7</div><div class="budget-day-sub">典禮日 · 士林午餐 + 買串晚餐</div></div></div>
+    <div class="budget-amount">~NT$1,100</div>
+  </div>
+  <div class="budget-row-card">
+    <div class="budget-row-left"><div class="budget-dot" style="background:#3a5a8a"></div><div><div class="budget-day-label">Day 3 · 6/8</div><div class="budget-day-sub">拍照日 · 中山午餐 + 宮原甜點</div></div></div>
+    <div class="budget-amount">~NT$600</div>
+  </div>
+  <div class="budget-row-card">
+    <div class="budget-row-left"><div class="budget-dot" style="background:#9a4a2a"></div><div><div class="budget-day-label">Day 4 · 6/9</div><div class="budget-day-sub">九族 · 園區午餐 + 夜市晚餐</div></div></div>
+    <div class="budget-amount">~NT$1,000</div>
+  </div>
+  <div class="budget-row-card">
+    <div class="budget-row-left"><div class="budget-dot" style="background:#3a7a7a"></div><div><div class="budget-day-label">Day 5 · 6/10</div><div class="budget-day-sub">審計新村 + 古早味海鮮館</div></div></div>
+    <div class="budget-amount">~NT$1,200</div>
+  </div>
+  <div class="budget-row-card">
+    <div class="budget-row-left"><div class="budget-dot" style="background:#6a4a8a"></div><div><div class="budget-day-label">Day 6 · 6/11</div><div class="budget-day-sub">豪華海陸頂級烤肉組（已訂）</div></div></div>
+    <div class="budget-amount">~NT$1,200</div>
+  </div>
+  <div class="budget-row-card">
+    <div class="budget-row-left"><div class="budget-dot" style="background:#c8922a"></div><div><div class="budget-day-label">Day 7 · 6/12</div><div class="budget-day-sub">露營早餐附贈 + 機場小食</div></div></div>
+    <div class="budget-amount">~NT$200</div>
+  </div>
+
+  <div class="notice" style="margin-top:4px;">
+    💡 <b>省錢小貼士</b>：6/7晚餐選較平實選項（NT$400以下），或6/9夜市控制消費，即可控制在 NT$5,000 目標內。
+  </div>
+</section>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function toggleDay(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+  }
+
+  // Animate budget bar
+  setTimeout(() => {
+    const bar = document.getElementById('budgetBar');
+    if (bar) bar.style.width = '114%';
+  }, 600);
+</script>
+</body>
+</html>
